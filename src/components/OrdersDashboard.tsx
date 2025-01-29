@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import OrdersTable from './OrdersTable';
 import { Alert, AlertDescription } from "@/components/ui/alert";
@@ -10,7 +10,6 @@ import { useToast } from "@/hooks/use-toast"
 
 
 const OrdersDashboard: React.FC = () => {
-    const [selectedOrder, setSelectedOrder] = useState<Order | null>(null);
     const queryClient = useQueryClient();
     const { toast } = useToast();
 
@@ -86,10 +85,6 @@ const OrdersDashboard: React.FC = () => {
         },
     });
 
-    const handleOrderClick = (order: Order) => {
-        // setSelectedOrder(order);
-    };
-
     const handleUpdateStatus = async (orderId: number, duoplaneId: string, status: 'confirmed_fraud' | 'false_positive') => {
         try {
             await updateStatusMutation.mutateAsync({ orderId, duoplaneId, status });
@@ -142,15 +137,9 @@ const OrdersDashboard: React.FC = () => {
                 <div className="flex-1">
                     <OrdersTable
                         orders={orders || []}
-                        onOrderClick={handleOrderClick}
                         onUpdateStatus={handleUpdateStatus}
                     />
                 </div>
-                {selectedOrder && (
-                    <div className="w-96">
-                        {/* Detail panel will go here */}
-                    </div>
-                )}
             </div>
         </div>
     );

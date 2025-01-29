@@ -15,7 +15,6 @@ import { ExternalLink, Check, X } from "lucide-react";
 
 interface OrdersTableProps {
     orders: Order[];
-    onOrderClick: (order: Order) => void;
     onUpdateStatus: (orderId: number, duoplaneId: string, status: 'confirmed_fraud' | 'false_positive') => Promise<void>;
 
 }
@@ -40,7 +39,7 @@ const StatusBadge: React.FC<{ status: Order['status'] }> = ({ status }) => {
     );
 };
 
-const OrdersTable: React.FC<OrdersTableProps> = ({ orders, onOrderClick, onUpdateStatus }) => {
+const OrdersTable: React.FC<OrdersTableProps> = ({ orders, onUpdateStatus }) => {
     const getDuoplaneUrl = (duoplaneId: string) => {
         return `https://app.duoplane.com/purchase_orders/${Number(duoplaneId)}`;
     };
@@ -76,7 +75,6 @@ const OrdersTable: React.FC<OrdersTableProps> = ({ orders, onOrderClick, onUpdat
                         <TableRow
                             key={order.id}
                             className="cursor-pointer hover:bg-gray-50"
-                            onClick={() => onOrderClick(order)}
                         >
                             <TableCell className="font-medium">
                                 {order.order_number}
