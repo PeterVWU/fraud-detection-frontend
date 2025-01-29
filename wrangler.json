@@ -1,0 +1,15 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "fraud-detection-frontend",
+  "compatibility_date": "2025-01-24",
+  "pages_build_output_dir": "./dist",
+  "observability": {
+    "enabled": true
+  },
+  "services": [
+    {
+      "binding": "FRAUD_DETECTION_WORKER",
+      "service": "fraud-detection-worker"
+    }
+  ]
+}
