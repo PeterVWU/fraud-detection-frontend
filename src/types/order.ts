@@ -12,5 +12,6 @@ export interface Order {
     shipping_country: string;
     fraud_reasons: string;
     client_ip: string;
+    duoplane_id: string;
     status: 'pending_review' | 'confirmed_fraud' | 'false_positive';
-}
+} 
