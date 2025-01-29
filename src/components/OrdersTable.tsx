@@ -64,7 +64,6 @@ const OrdersTable: React.FC<OrdersTableProps> = ({ orders, onUpdateStatus }) => 
                         <TableHead>Customer</TableHead>
                         <TableHead>Shipping Address</TableHead>
                         <TableHead>Amount</TableHead>
-                        {/* <TableHead>Risk Factors</TableHead> */}
                         <TableHead>Status</TableHead>
                         <TableHead>External Links</TableHead>
                         <TableHead>Actions</TableHead>
@@ -78,9 +77,6 @@ const OrdersTable: React.FC<OrdersTableProps> = ({ orders, onUpdateStatus }) => 
                         >
                             <TableCell className="font-medium">
                                 {order.order_number}
-                                {/* <Badge variant="outline" className="ml-2">
-                                    {order.platform_type}
-                                </Badge> */}
                             </TableCell>
                             <TableCell>
                                 {format(new Date(order.created_at), 'MMM d, yyyy HH:mm')}
@@ -96,11 +92,6 @@ const OrdersTable: React.FC<OrdersTableProps> = ({ orders, onUpdateStatus }) => 
                                 </div>
                             </TableCell>
                             <TableCell>${order.total_amount.toFixed(2)}</TableCell>
-                            {/* <TableCell>
-                                <div className="max-w-xs text-sm text-gray-600 truncate">
-                                    {order.fraud_reasons}
-                                </div>
-                            </TableCell> */}
                             <TableCell>
                                 <StatusBadge status={order.status} />
                             </TableCell>
